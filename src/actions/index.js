@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART';
+export const ADD_PRODUCTS_TO_STORE = 'ADD_PRODUCT_TO_STORE';
 export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
 export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY';
 export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY';
@@ -10,11 +11,11 @@ const BASE_URL="https://fulfillant.com/react-api/";
 
 export const fetchProductsFromApi = config => {
 
-    
+
     return (dispatch)=>{
         let url=BASE_URL+"getProducts";
    axios.get(url).then(res=>{
-        dispatch(orderByAsc());
+        dispatch(addProductToStore(res.products));
         
         console.log(res);
     }).catch(error=>{
@@ -26,6 +27,15 @@ export const fetchProductsFromApi = config => {
 
 }
 };
+
+export const addProductToStore= products=>{
+    return {
+        type: ADD_PRODUCTS_TO_STORE,
+        payload: products
+    }
+
+}
+
 export const addProductToCart = product => {
     return {
         type: ADD_PRODUCT_TO_CART,
@@ -82,6 +92,8 @@ export const orderByAsc = () => {
         type: ORDER_BY_ASC
     }
 };
+
+
 
 export const orderByDesc =  () => {
     return {

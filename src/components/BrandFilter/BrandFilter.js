@@ -46,7 +46,7 @@ const mapStateToProps = (state) => {
 
     const brandItemsCount = {};
 
-    state.shop.products.forEach(p => {
+    state.shop.products && state.shop.products.forEach(p => {
         brandItemsCount[p.brand] = brandItemsCount[p.brand] + 1 || 1;
     });
 
