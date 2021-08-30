@@ -10,6 +10,7 @@ const BASE_URL="https://fulfillant.com/react-api/";
 
 export const fetchProductsFromApi = config => {
 
+    
     return (dispatch)=>{
         let url=BASE_URL+"getProducts";
    axios.get(url).then(res=>{
