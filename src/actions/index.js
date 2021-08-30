@@ -15,9 +15,9 @@ export const fetchProductsFromApi = config => {
     return (dispatch)=>{
         let url=BASE_URL+"getProducts";
    axios.get(url).then(res=>{
-        dispatch(addProductToStore(res.products));
+        dispatch(addProductToStore(res.data.products));
         
-        console.log(res);
+        console.log("will dispatch add p to store",res);
     }).catch(error=>{
         console.log(error);
 
@@ -29,6 +29,7 @@ export const fetchProductsFromApi = config => {
 };
 
 export const addProductToStore= products=>{
+    console.log("db",products);
     return {
         type: ADD_PRODUCTS_TO_STORE,
         payload: products

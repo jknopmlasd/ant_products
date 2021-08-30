@@ -67,6 +67,11 @@ class ProductList extends Component {
 
         let isActive = this.state.colValue[this.state.colValue.length -1];
 
+        if(!this.props.products){
+
+            return (<div><h2>Loading!</h2></div>);
+        }
+
         return (
             <div className="col-lg-9">
                 <div className="row mb-3">
@@ -81,7 +86,7 @@ class ProductList extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    {paginationPipe(this.props.products, this.state).map(product =>{
+                 {this.props.products && paginationPipe(this.props.products, this.state).map(product =>{
                         let classes = `${this.state.colValue} col-md-6 mb-4`;
                         return (<div key= {product.id} className={classes}>
                             <Product key={product.id} product={product} />

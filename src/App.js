@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Provider} from 'react-redux';
-import {createStore ,applyMiddleware } from 'redux';
+import {createStore ,applyMiddleware,compose} from 'redux';
 import rootReducer from './reducers';
 import thunk from 'redux-thunk'
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
@@ -14,12 +14,8 @@ import ShoppingCart from "./pages/ShopingCart/ShoppingCart";
 
 
 
-export const  store = createStore(rootReducer, applyMiddleware(thunk),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-export const loadData=mmkk=>{
-    console.log("ddd");
-    console.log(store);
-    ;
-};
+export const  store = createStore(rootReducer, compose(applyMiddleware(thunk),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+
 class App extends Component {
    
     
