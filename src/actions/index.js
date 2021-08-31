@@ -1,11 +1,10 @@
 import axios from "axios";
-
-export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART';
+//Store 
 export const ADD_PRODUCTS_TO_STORE = 'ADD_PRODUCT_TO_STORE';
-export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
-export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY';
-export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY';
-export const GET_PRODUCT_FROM_API = 'GET_PRODUCT_FROM_API';
+
+
+
+
 
 const BASE_URL="https://fulfillant.com/react-api/";
 
@@ -28,6 +27,7 @@ export const fetchProductsFromApi = config => {
 }
 };
 
+//Store
 export const addProductToStore= products=>{
     console.log("db",products);
     return {
@@ -37,6 +37,13 @@ export const addProductToStore= products=>{
 
 }
 
+
+//Cart
+export const ADD_PRODUCT_TO_CART = 'ADD_PRODUCT_TO_CART';
+export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
+export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY';
+export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY';
+export const GET_PRODUCT_FROM_API = 'GET_PRODUCT_FROM_API';
 export const addProductToCart = product => {
     return {
         type: ADD_PRODUCT_TO_CART,
@@ -66,9 +73,10 @@ export const decrementCartQuantity = productId => {
 };
 
 
+
+//Filter
 export const ADD_BRAND_TO_FILTER = 'ADD_BRAND_TO_FILTER';
 export const REMOVE_BRAND_FROM_FILTER = 'REMOVE_BRAND_FROM_FILTER';
-
 export const addBrandToFilter = brand => {
     return {
         type: ADD_BRAND_TO_FILTER,
@@ -84,6 +92,7 @@ export const removeBrandFromFilter = brand => {
     }
 };
 
+//Order
 export const ORDER_BY_ASC = 'ORDER_BY_ASC';
 export const ORDER_BY_DESC = 'ORDER_BY_DESC';
 export const CLEAR_ORDER_BY_PRICE = 'CLEAR_ORDER_BY_PRICE';
