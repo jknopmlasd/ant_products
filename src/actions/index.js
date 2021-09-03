@@ -1,7 +1,7 @@
 import axios from "axios";
 //Store 
 export const ADD_PRODUCTS_TO_STORE = 'ADD_PRODUCTS_TO_STORE';
-
+export const LOADING='LOADING';
 
 
 
@@ -10,9 +10,10 @@ const BASE_URL="https://fulfillant.com/react-api/";
 
 export const fetchProductsFromApi = (config) => {
         console.log(config);
-
+        
+        
     return (dispatch)=>{
-
+        dispatch(loading(1));
         let url=BASE_URL+"getProducts";
         if(config){
          let queryString = Object.keys(config).map(key => key + '=' + config[key]).join('&');
@@ -22,10 +23,11 @@ export const fetchProductsFromApi = (config) => {
         console.log(url);
    axios.get(url).then(res=>{
         dispatch(addProductsToStore(res.data.products));
-        
+        dispatch(loading(0));
         console.log("will dispatch add p to store",res);
     }).catch(error=>{
         console.log(error);
+        dispatch(loading(0));
 
     });
     
@@ -43,6 +45,14 @@ export const addProductsToStore= products=>{
     return {
         type: ADD_PRODUCTS_TO_STORE,
         payload: products
+    }
+
+}
+
+export const loading=(x)=>{
+    return {
+        type: LOADING,
+        payload:x
     }
 
 }

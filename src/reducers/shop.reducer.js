@@ -3,13 +3,15 @@ import {
     DECREMENT_CART_ITEM_QUANTITY,
     INCREMENT_CART_ITEM_QUANTITY,
     REMOVE_PRODUCT_FROM_CART,
-    ADD_PRODUCTS_TO_STORE
+    ADD_PRODUCTS_TO_STORE,
+    LOADING
 } from '../actions';
 import {phones} from "../data/phones";
 
 const initialState = {
     products: [],
-    cart: []
+    cart: [],
+    product_loading:0
 };
 
 
@@ -18,6 +20,9 @@ const shopReducer = (state = initialState, action ) => {
     let updatedItemIndex;
 
     switch (action.type) {
+        case LOADING:
+            console.log("db",action);
+           return {...state, product_loading:action.payload};
         case ADD_PRODUCTS_TO_STORE:
             
 

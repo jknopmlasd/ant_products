@@ -11,7 +11,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import ShoppingCart from "./pages/ShopingCart/ShoppingCart";
-
+import NotFound from "./pages/Other/NotFound";
 
 
 export const  store = createStore(rootReducer, compose(applyMiddleware(thunk),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
@@ -32,8 +32,9 @@ class App extends Component {
                         return <Redirect to={'/products'}/>
                     }}/>
                     <Route exact path={'/products'} component={Home} />
-                    <Route exact path={'/product/:id'} component={ProductDetail}/>
-                    <Route exact patr={'/cart'} component={ShoppingCart}/>
+                    <Route exact path={'/product/:id(\\d+)'} component={ProductDetail}/>
+                    <Route exact path={'/cart'} component={ShoppingCart}/>
+                    <Route component={NotFound} />
                 </Switch>
                 <Footer/>
             </React.Fragment>
