@@ -19,9 +19,8 @@ class ProductList extends Component {
     };
 
     componentDidMount(){
-        //getProductsFromApi();
-        console.log(this.props);
-    this.props.fetchProducts("s");
+    console.log(this.props);  
+    this.props.fetchProducts({});
     }
 
     changeLayout = (n) => {
@@ -122,7 +121,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps=dispatch=>{
  return {
-    fetchProducts:()=>dispatch(fetchProductsFromApi())
+    fetchProducts:(x)=>dispatch(fetchProductsFromApi(x))
 
 
  } 
