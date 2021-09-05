@@ -37,12 +37,12 @@ const OrderFilter = ({dispatch}) => {
 
 
     return (
-            <div className="card">
-                <div className="card-header">
-                    <h3>Price {removeSelected} </h3>
-                </div>
-                <ul className="list-group flex-row  flex-wrap" >
-                    <li className="list-group-item flex-fill">
+            <div className="d-flex align-items-center">
+                
+                    <h4>Price: {removeSelected} </h4>
+                
+                <ul className="list-group flex-row" >
+                    <li className="list-group-item flex-fill border-0">
                         <label className="custom-radio-btn"> Low to high
                             <input
                                     value={ORDER_BY_ASC}
@@ -52,7 +52,7 @@ const OrderFilter = ({dispatch}) => {
                             <span className="custom-radio-btn__span"></span>
                         </label>
                     </li>
-                    <li className="list-group-item flex-fill">
+                    <li className="list-group-item flex-fill border-0">
                         <label className="custom-radio-btn"> High to low
                             <input
                                 value={ORDER_BY_DESC}

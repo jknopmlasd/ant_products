@@ -77,7 +77,7 @@ class ProductList extends Component {
                 return (<div><h2>No Product Found</h2></div>);
             }else{
                 return (
-                    <div className="col-lg-9">
+                    <div className="col-lg-12">
                         <div className="row mb-3">
                             <div className="col-12 d-none d-lg-block d-xl-block">
                                 <div className="card ">
