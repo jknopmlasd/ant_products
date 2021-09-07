@@ -39,7 +39,7 @@ const OrderFilter = ({dispatch}) => {
     return (
             <div className="d-flex align-items-center">
                 
-                    <h4>Price: {removeSelected} </h4>
+                    <h4>Sort by: {removeSelected} </h4>
                 
                 <ul className="list-group flex-row" >
                     <li className="list-group-item flex-fill border-0">

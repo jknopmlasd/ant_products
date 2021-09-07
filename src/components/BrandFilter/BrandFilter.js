@@ -18,16 +18,29 @@ const BrandFilter = (props) => {
             dispatch(removeBrandFromFilter(name));
         }
     };
+    
+    const handleChange = (e) =>{
+        console.log(e.target.value);
+        console.log(e.target.name);
+       
+     
 
-
+    }
+    
+    const handleSubmit =(e) =>{
+        e.preventDefault();
+        dispatch();
+    }
         return (
-            <div className="d-flex align-items-center">
+            <div className="row align-items-center">
                 
-                    <h4>Brands:</h4>
-                
-                <ul className="list-group flex-row">
+                <h5 className="col-sm-2">Filter by:</h5>
+                <div className="dropdown col-sm-4">
+                  <button className="btn dropdown-toggle"  type="button" id="filterBar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Brands</button>
+        
+                  <ul className="dropdown-menu" aria-labelledby="filterBar">
                     {brands.map(brand => (
-                        <li key={brand} className="list-group-item border-0">
+                        <li key={brand} className="dropdown-item border-0">
                             <label className="custom-checkbox text-capitalize"> {brand} ({brandItemsCount[brand]})
                                 <input type="checkbox"
                                        name={brand}
@@ -37,7 +50,18 @@ const BrandFilter = (props) => {
                         </li>
                     ))}
                 </ul>
+                </div>
+                <div className="col-sm-6">
+                    
+                    <form className="row" onSubmit={handleSubmit}>
+                        <label className="col-sm-3">Price:</label>
+                        <input className="col-sm-3" type="number" placeholder="min" min="0" name="min" required onChange={handleChange}/>
+                        <input className="col-sm-3" type="number" placeholder="max" min="0" name="max" required onChange={handleChange}/>
+                        <button className="col-sm-3" type="submit">Confirm</button>
+                    </form>
+                </div>
             </div>
+
         );
 
 };
