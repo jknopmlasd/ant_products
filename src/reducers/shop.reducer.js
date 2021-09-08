@@ -11,6 +11,7 @@ import {phones} from "../data/phones";
 const initialState = {
     products: [],
     cart: [],
+    brands:[],
     product_loading:0
 };
 
@@ -26,7 +27,7 @@ const shopReducer = (state = initialState, action ) => {
         case ADD_PRODUCTS_TO_STORE:
             
 
-            return {...state, products: action.payload};
+            return {...state, products: action.payload.products,brands:action.payload.brands};
         
         case INCREMENT_CART_ITEM_QUANTITY:
             updatedCart = [...state.cart];

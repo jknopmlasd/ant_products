@@ -6,13 +6,13 @@ import ProductSlider from "../../components/ProductSlider/ProductSlider";
 import {fetchProductsFromApi} from "../../actions/index";
 const ProductDetail = (props) => {
 
-    console.log(props);
+    console.log("props are: ",props);
 
     useEffect(() => {
     if(!props.product){
         console.log("will fetch product",props);
         let id=props.match.params.id;
-        props.fetchProducts({id});
+        props.dispatch(fetchProductsFromApi({id}));
     }    
     console.log(props);    
       },[props.product]);
@@ -57,13 +57,4 @@ const mapStateToProps = (state, props) =>  {
     }
 };
 
-const mapDispatchToProps=dispatch=>{
-    return {
-       fetchProducts:(x)=>dispatch(fetchProductsFromApi(x))
-   
-   
-    } 
-   
-   }
-
-export default connect(mapStateToProps,mapDispatchToProps)(ProductDetail);
+export default connect(mapStateToProps,null)(ProductDetail);

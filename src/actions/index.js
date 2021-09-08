@@ -22,7 +22,7 @@ export const fetchProductsFromApi = (config) => {
         console.log(config);
         console.log(url);
    axios.get(url).then(res=>{
-        dispatch(addProductsToStore(res.data.products));
+        dispatch(addProductsToStore(res.data));
         dispatch(loading(0));
         console.log("will dispatch add p to store",res);
     }).catch(error=>{

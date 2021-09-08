@@ -7,7 +7,7 @@ import {addBrandToFilter, removeBrandFromFilter} from "../../actions";
 
 const BrandFilter = (props) => {
 
-    const {dispatch, brandItemsCount} = props;
+    const {dispatch, brandItemsCount,brnads} = props;
     const handleSelectBox = (e) => {
         const name = e.target.name;
         const value = e.target.checked;
@@ -39,7 +39,7 @@ const BrandFilter = (props) => {
                   <button className="btn dropdown-toggle"  type="button" id="filterBar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Brands</button>
         
                   <ul className="dropdown-menu" aria-labelledby="filterBar">
-                    {brands.map(brand => (
+                    {props.brands.map(brand => (
                         <li key={brand} className="dropdown-item border-0">
                             <label className="custom-checkbox text-capitalize"> {brand} ({brandItemsCount[brand]})
                                 <input type="checkbox"
@@ -76,7 +76,8 @@ const mapStateToProps = (state) => {
 
 
     return {
-        brandItemsCount
+        brandItemsCount,
+        brands:state.shop.brands
     }
 
 };
