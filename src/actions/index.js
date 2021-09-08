@@ -3,9 +3,6 @@ import axios from "axios";
 export const ADD_PRODUCTS_TO_STORE = 'ADD_PRODUCTS_TO_STORE';
 export const LOADING='LOADING';
 
-
-
-
 const BASE_URL="https://fulfillant.com/react-api/";
 
 export const fetchProductsFromApi = (config) => {
@@ -97,18 +94,24 @@ export const decrementCartQuantity = productId => {
 //Filter
 export const ADD_BRAND_TO_FILTER = 'ADD_BRAND_TO_FILTER';
 export const REMOVE_BRAND_FROM_FILTER = 'REMOVE_BRAND_FROM_FILTER';
+export const PRICE_FILTER = 'PRICE_FILTER';
 export const addBrandToFilter = brand => {
     return {
         type: ADD_BRAND_TO_FILTER,
         brand
     }
 };
-
-
 export const removeBrandFromFilter = brand => {
     return  {
         type: REMOVE_BRAND_FROM_FILTER,
         brand
+    }
+};
+export const priceFilter = (min,max) =>{
+    console.log("db22",min,max);
+    return  {
+        type: PRICE_FILTER,
+        payload:{min:min,max:max}
     }
 };
 

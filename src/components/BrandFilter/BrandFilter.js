@@ -1,13 +1,16 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import './BrandFilter.scss';
 import {brands} from "../../data/brands";
-import {addBrandToFilter, removeBrandFromFilter} from "../../actions";
+import {addBrandToFilter, removeBrandFromFilter,priceFilter} from "../../actions";
 
 
 const BrandFilter = (props) => {
 
-    const {dispatch, brandItemsCount,brnads} = props;
+    const {dispatch, brandItemsCount,brands} = props;
+    const [min, setMin] = useState(0);
+    const [max, setMax] = useState(1000);
+
     const handleSelectBox = (e) => {
         const name = e.target.name;
         const value = e.target.checked;
@@ -20,16 +23,19 @@ const BrandFilter = (props) => {
     };
     
     const handleChange = (e) =>{
-        console.log(e.target.value);
-        console.log(e.target.name);
-       
-     
+        
+        if(e.target.name === "min"){setMin(e.target.value)};
+        if(e.target.name ==="max"){setMax(e.target.value)};
 
     }
     
     const handleSubmit =(e) =>{
         e.preventDefault();
-        dispatch();
+        console.log("min in brandFilter",min,max)
+        dispatch(priceFilter(min,max));
+        setMin(0);
+        setMax(1000);
+
     }
         return (
             <div className="row align-items-center">
