@@ -9,7 +9,7 @@ const BrandFilter = (props) => {
 
     const {dispatch, brandItemsCount,brands} = props;
     const [min, setMin] = useState(0);
-    const [max, setMax] = useState(1000);
+    const [max, setMax] = useState(1000000);
 
     const handleSelectBox = (e) => {
         const name = e.target.name;
@@ -23,18 +23,20 @@ const BrandFilter = (props) => {
     };
     
     const handleChange = (e) =>{
-        
+        console.log("clicked",e);
+        console.log(e.target);
+        console.log(e.target.name);
+        console.log(e.target.value);
         if(e.target.name === "min"){setMin(e.target.value)};
         if(e.target.name ==="max"){setMax(e.target.value)};
-
+        console.log("local state",min,max);
     }
     
     const handleSubmit =(e) =>{
         e.preventDefault();
-        console.log("min in brandFilter",min,max)
+        console.log("min and max in brandFilter",min,max)
         dispatch(priceFilter(min,max));
-        setMin(0);
-        setMax(1000);
+        
 
     }
         return (
@@ -61,8 +63,8 @@ const BrandFilter = (props) => {
                     
                     <form className="row" onSubmit={handleSubmit}>
                         <label className="col-sm-3">Price:</label>
-                        <input className="col-sm-3" type="number" placeholder="min" min="0" name="min" required onChange={handleChange}/>
-                        <input className="col-sm-3" type="number" placeholder="max" min="0" name="max" required onChange={handleChange}/>
+                        <input className="col-sm-3" type="number"   placeholder="min" min="0" name="min" onChange={handleChange}/>
+                        <input className="col-sm-3" type="number"   placeholder="max" min="0" name="max" onChange={handleChange}/>
                         <button className="col-sm-3" type="submit">Confirm</button>
                     </form>
                 </div>

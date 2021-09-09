@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import Product from "../../components/Product/Product";
 
 import {brandFilter} from "../../pipes/brandFilter";
+import {priceFilter} from "../../pipes/priceFilter";
 import {orderByFilter} from "../../pipes/orderByFilter";
 import LayoutMode from "../../components/LayoutMode/LayoutMode";
 import {paginationPipe} from "../../pipes/paginationFilter";
@@ -129,9 +130,10 @@ class ProductList extends Component {
 const mapStateToProps = state => {
     const brands = state.brandFilter;
     const orderBy = state.orderBy;
-
-    const filterByBrandArr = brandFilter(state.shop.products, brands);
-    const filterByOrderArr = orderByFilter(filterByBrandArr, orderBy);
+    const allProducts=state.shop.products;
+    const filterByBrandArr = brandFilter(allProducts, brands);
+    const filterByPriceArr = priceFilter(filterByBrandArr, state.priceFilter.min,state.priceFilter.max);
+    const filterByOrderArr = orderByFilter(filterByPriceArr, orderBy);
 
 
     return {products: filterByOrderArr,product_loading:state.shop.product_loading }

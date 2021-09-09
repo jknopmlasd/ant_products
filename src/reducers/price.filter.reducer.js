@@ -6,8 +6,7 @@ export const  priceFilterReducer = (state = '', action) => {
             if(action.payload.min) 
             console.log("min in price reducer",action.payload);
             console.log("state",state);
-            return [...state, {min:action.payload.min} ];
-            
+            return {...state, min:action.payload.min,max:action.payload.max };
         
         default:
             return state;
