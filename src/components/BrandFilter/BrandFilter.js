@@ -7,7 +7,7 @@ import {updateBrandFilter,priceFilter} from "../../actions";
 import Select from 'react-select';
 
 const BrandFilter = (props) => {
-
+    console.log(props);
     const {dispatch, brandItemsCount,brands} = props;
 
     /*
@@ -23,9 +23,10 @@ const BrandFilter = (props) => {
     
     //const brandsOptionsSelected=brands;
 
-    const brandsOptionsSelected=brands && brands.filter(brand=>brand.selected=="N");
+    const brandsOptionsSelected=brands && brands.filter(brand=>brand.selected=="Y");
     
-    
+    console.log("db2",brandsOptionsSelected);
+    console.log("db3",brandsOptions);
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(1000000);
 
@@ -63,13 +64,14 @@ const BrandFilter = (props) => {
                 <h5 className="col-sm-2">Filter by:</h5>
                 <div className="col-sm-4">
                 <Select
-        defaultInputValue={brandsOptionsSelected}
-        onChange={handleSelectBox}
-        options={brandsOptions}
-        isMulti
-        className="basic-multi-select"
-    classNamePrefix="select"
-      /></div>
+                    defaultInputValue={brandsOptionsSelected}
+                    onChange={handleSelectBox}
+                    options={brandsOptions}
+                    isMulti
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                    />
+                </div>
                 
                 <div className="col-sm-6">
                     

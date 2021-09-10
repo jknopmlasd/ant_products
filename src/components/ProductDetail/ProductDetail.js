@@ -10,13 +10,6 @@ const ProductDetail = (props) => {
         images,
         brand,
         price,
-        cpu,
-        camera,
-        size,
-        weight,
-        display,
-        battery,
-        memory,
         description,
         id,
         detail
