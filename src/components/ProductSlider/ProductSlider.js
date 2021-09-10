@@ -15,10 +15,10 @@ const ProductSlider = (
     const handleImageChange = (e) => {
         const currentX = e.clientX - cumulativeOffSet(imageRef.current).left;
 
-        console.dir(imageRef.current);
+        //console.dir(imageRef.current);
 
         const part = imageRef.current.clientWidth / images.length;
-        console.log(Math.ceil(currentX / part) - 1);
+        //console.log(Math.ceil(currentX / part) - 1);
 
         let imgIndex = Math.ceil(currentX / part) - 1;
         if (imgIndex < 0) {
@@ -58,7 +58,7 @@ const ProductSlider = (
                 </div>
                 <div className="img-small-wrap">
                     {images.map((img , i ) => (
-                        <div className="item-gallery" onClick={() => {changeImage(i)}}><img src={img}/></div>
+                        <div key={i} className="item-gallery" onClick={() => {changeImage(i)}}><img src={img}/></div>
                     ))}
                 </div>
             </article>

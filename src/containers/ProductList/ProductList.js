@@ -20,8 +20,14 @@ class ProductList extends Component {
     };
 
     componentDidMount(){
-    console.log(this.props);  
+        console.log("db879");
+    console.log(this.props.products); 
+    if(this.props && this.props.products && this.props.products.length>1){
+console.log("have products and not single products");
+    }else{
+        console.log("have no products, or its is a single profucts,will fetch from server");
     this.props.fetchProducts({});
+        }
     }
 
     changeLayout = (n) => {
