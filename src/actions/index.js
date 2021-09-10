@@ -1,14 +1,14 @@
 import axios from "axios";
 //Store 
 export const ADD_PRODUCTS_TO_STORE = 'ADD_PRODUCTS_TO_STORE';
+export const ADD_BRANDS_TO_STORE = 'ADD_BRANDS_TO_STORE';
+export const UPDATE_BRAND_FILTER='UPDATE_BRAND_FILTER';
 export const LOADING='LOADING';
 
 const BASE_URL="https://fulfillant.com/react-api/";
 
 export const fetchProductsFromApi = (config) => {
-        console.log(config);
-        
-        
+  
     return (dispatch)=>{
         dispatch(loading(1));
         let url=BASE_URL+"getProducts";
@@ -16,10 +16,10 @@ export const fetchProductsFromApi = (config) => {
          let queryString = Object.keys(config).map(key => key + '=' + config[key]).join('&');
         url+="?"+queryString;
         }
-        console.log(config);
-        console.log(url);
+        
    axios.get(url).then(res=>{
         dispatch(addProductsToStore(res.data));
+        dispatch(addBrandsToStore(res.data.brands));
         dispatch(loading(0));
         console.log("will dispatch add p to store",res);
     }).catch(error=>{
@@ -34,9 +34,30 @@ export const fetchProductsFromApi = (config) => {
 };
 
 
+// Brands
+
+export const updateBrandFilter= brands=>{
+    
+    return {
+        type: UPDATE_BRAND_FILTER,
+        payload: brands
+    }
+
+}
 
 
-//Store
+export const addBrandsToStore= brands=>{
+    
+    return {
+        type: ADD_BRANDS_TO_STORE,
+        payload: brands
+    }
+
+}
+
+
+
+//Products
 export const addProductsToStore= products=>{
     
     return {
@@ -61,6 +82,7 @@ export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
 export const INCREMENT_CART_ITEM_QUANTITY = 'INCREMENT_CART_ITEM_QUANTITY';
 export const DECREMENT_CART_ITEM_QUANTITY = 'DECREMENT_CART_ITEM_QUANTITY';
 export const GET_PRODUCT_FROM_API = 'GET_PRODUCT_FROM_API';
+
 export const addProductToCart = product => {
     return {
         type: ADD_PRODUCT_TO_CART,

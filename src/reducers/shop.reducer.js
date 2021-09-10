@@ -6,12 +6,12 @@ import {
     ADD_PRODUCTS_TO_STORE,
     LOADING
 } from '../actions';
-import {phones} from "../data/phones";
+
 
 const initialState = {
     products: [],
     cart: [],
-    brands:[],
+    
     product_loading:0
 };
 
@@ -22,12 +22,12 @@ const shopReducer = (state = initialState, action ) => {
 
     switch (action.type) {
         case LOADING:
-            console.log("db",action);
+           
            return {...state, product_loading:action.payload};
         case ADD_PRODUCTS_TO_STORE:
             
 
-            return {...state, products: action.payload.products,brands:action.payload.brands};
+            return {...state, products: action.payload.products};
         
         case INCREMENT_CART_ITEM_QUANTITY:
             updatedCart = [...state.cart];

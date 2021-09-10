@@ -10,11 +10,10 @@ const ProductDetail = (props) => {
 
     useEffect(() => {
     if(!props.product){
-        console.log("will fetch product",props);
         let id=props.match.params.id;
         props.dispatch(fetchProductsFromApi({id}));
     }    
-    console.log(props);    
+      
       },[props.product]);
       if(!props.product_loading){
       if(props.product){

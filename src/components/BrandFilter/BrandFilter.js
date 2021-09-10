@@ -1,64 +1,76 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import './BrandFilter.scss';
-import {brands} from "../../data/brands";
-import {addBrandToFilter, removeBrandFromFilter,priceFilter} from "../../actions";
 
+import {updateBrandFilter,priceFilter} from "../../actions";
+
+import Select from 'react-select';
 
 const BrandFilter = (props) => {
 
     const {dispatch, brandItemsCount,brands} = props;
+
+    /*
+    const brandsOptions= brands.map((brand,i) => {
+       return  {value:brand.value,label:brand.label};
+     });
+
+     */
+
+     //const brandsOptions= [{"value":1,"label":"A"}];
+    
+    const brandsOptions= brands;
+    
+    //const brandsOptionsSelected=brands;
+
+    const brandsOptionsSelected=brands && brands.filter(brand=>brand.selected=="N");
+    
+    
     const [min, setMin] = useState(0);
     const [max, setMax] = useState(1000000);
 
     const handleSelectBox = (e) => {
-        const name = e.target.name;
-        const value = e.target.checked;
+        //const name = e.target.name;
+        //const value = e.target.checked;
 
-        if(e.target.checked) {
-            dispatch(addBrandToFilter(name));
-        } else {
-            dispatch(removeBrandFromFilter(name));
-        }
+        
+
+        const selectedBrands=e.map(i=>{return i.value});
+        
+        dispatch(updateBrandFilter(selectedBrands));
+        return;
+       
     };
     
     const handleChange = (e) =>{
-        console.log("clicked",e);
-        console.log(e.target);
-        console.log(e.target.name);
-        console.log(e.target.value);
+        
         if(e.target.name === "min"){setMin(e.target.value)};
         if(e.target.name ==="max"){setMax(e.target.value)};
-        console.log("local state",min,max);
+       
     }
     
     const handleSubmit =(e) =>{
         e.preventDefault();
-        console.log("min and max in brandFilter",min,max)
         dispatch(priceFilter(min,max));
         
 
     }
+  
         return (
             <div className="row align-items-center">
-                
+          
+          
                 <h5 className="col-sm-2">Filter by:</h5>
-                <div className="dropdown col-sm-4">
-                  <button className="btn dropdown-toggle"  type="button" id="filterBar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Brands</button>
-        
-                  <ul className="dropdown-menu" aria-labelledby="filterBar">
-                    {props.brands.map(brand => (
-                        <li key={brand} className="dropdown-item border-0">
-                            <label className="custom-checkbox text-capitalize"> {brand} ({brandItemsCount[brand]})
-                                <input type="checkbox"
-                                       name={brand}
-                                       className="custom-checkbox__input" onInput={handleSelectBox}/>
-                                <span className="custom-checkbox__span"></span>
-                            </label>
-                        </li>
-                    ))}
-                </ul>
-                </div>
+                <div className="col-sm-4">
+                <Select
+        defaultInputValue={brandsOptionsSelected}
+        onChange={handleSelectBox}
+        options={brandsOptions}
+        isMulti
+        className="basic-multi-select"
+    classNamePrefix="select"
+      /></div>
+                
                 <div className="col-sm-6">
                     
                     <form className="row" onSubmit={handleSubmit}>
@@ -81,11 +93,9 @@ const mapStateToProps = (state) => {
     state.shop.products && state.shop.products.forEach(p => {
         brandItemsCount[p.brand] = brandItemsCount[p.brand] + 1 || 1;
     });
-
-
     return {
         brandItemsCount,
-        brands:state.shop.brands
+        brands:state.brandFilter.brands
     }
 
 };

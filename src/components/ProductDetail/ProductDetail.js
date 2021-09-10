@@ -42,7 +42,7 @@ const ProductDetail = (props) => {
                 <button
                     onClick={onCart}
                     className="btn btn-lg btn-outline-primary text-uppercase"><i
-                    className="fa fa-shopping-cart"/> Add to cart11
+                    className="fa fa-shopping-cart"/> Add to cart
                 </button>
                 <br/><br/>
                 <div dangerouslySetInnerHTML={{__html: detail}} />

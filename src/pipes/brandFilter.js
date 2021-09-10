@@ -1,5 +1,14 @@
-export const brandFilter = (arr, brand) => {
-    if(!brand) return arr;
+export const brandFilter = (arr, brands) => {
+    if(!brands) return arr;
+    
+    const selectedBrands=brands.flatMap((brand)=>brand.selected=="Y"?[brand.value]:[]);
 
-    return arr.filter(product => brand.includes(product.brand));
+
+
+if(!selectedBrands || selectedBrands.length==0) return arr;
+
+
+const filtered=arr.filter(product => selectedBrands.includes(product.brand));
+
+return filtered;
 };

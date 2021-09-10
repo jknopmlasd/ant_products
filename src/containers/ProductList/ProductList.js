@@ -128,7 +128,7 @@ class ProductList extends Component {
 }
 
 const mapStateToProps = state => {
-    const brands = state.brandFilter;
+    const brands = state.brandFilter.brands;
     const orderBy = state.orderBy;
     const allProducts=state.shop.products;
     const filterByBrandArr = brandFilter(allProducts, brands);
