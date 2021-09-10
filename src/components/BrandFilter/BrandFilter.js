@@ -45,13 +45,18 @@ const BrandFilter = (props) => {
     
     const handleChange = (e) =>{
         
-        if(e.target.name === "min"){setMin(e.target.value)};
-        if(e.target.name ==="max"){setMax(e.target.value)};
+        if(e.target.name === "min"){setMin(e.target.valueAsNumber)};
+        if(e.target.name ==="max"){setMax(e.target.valueAsNumber)};
        
     }
     
     const handleSubmit =(e) =>{
         e.preventDefault();
+        
+        if(min>max){
+          alert("min needs to be smaller than max");
+          return;  
+        }
         dispatch(priceFilter(min,max));
         
 
@@ -77,8 +82,8 @@ const BrandFilter = (props) => {
                     
                     <form className="row" onSubmit={handleSubmit}>
                         <label className="col-sm-3">Price:</label>
-                        <input className="col-sm-3" type="number"   placeholder="min" min="0" name="min" onChange={handleChange}/>
-                        <input className="col-sm-3" type="number"   placeholder="max" min="0" name="max" onChange={handleChange}/>
+                        <input className="col-sm-3" type="number"   name="min" placeholder="min" onChange={handleChange}/>
+                        <input className="col-sm-3" type="number"   name="max" placeholder="max" onChange={handleChange}/>
                         <button className="col-sm-3" type="submit">Confirm</button>
                     </form>
                 </div>
