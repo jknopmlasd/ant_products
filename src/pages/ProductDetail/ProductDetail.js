@@ -16,7 +16,7 @@ const ProductDetail = (props) => {
       
       },[props.product]);
 
-      if(!props.product_loading){
+      if(props.product_loading){
 
         return (
             <div className="container" style={{padding: '6rem 0'}}>
