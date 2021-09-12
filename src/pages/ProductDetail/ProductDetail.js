@@ -15,35 +15,40 @@ const ProductDetail = (props) => {
     }    
       
       },[props.product]);
+
       if(!props.product_loading){
-      if(props.product){
-    return (
-        
-         <div className="container" style={{padding: '6rem 0'}}>
-            <div className="card">
-                <div className="row">
-                    <ProductSlider images={props.product.images}/>
-                    <ProductDetailComponent product={props.product}/>
-                </div>
-            </div>
+
+        return (
+            <div className="container" style={{padding: '6rem 0'}}>
+            <h3>Loading</h3>
+            <img src="/loading.gif"/>
         </div>
-    );}else{
+        );
+      }
+
+      if(!props.product){
         return (
             <div className="container" style={{padding: '6rem 0'}}>
             <h3>No Product Found</h3>
         </div>
         );
 
-    }
-        }else{
-            return (
-                <div className="container" style={{padding: '6rem 0'}}>
-                <h3>Loading</h3>
-                <img src="/loading.gif"/>
+    }else{
+        return (
+            
+             <div className="container" style={{padding: '6rem 0'}}>
+                <div className="card">
+                    <div className="row">
+                        <ProductSlider images={props.product.images}/>
+                        <ProductDetailComponent product={props.product}/>
+                    </div>
+                </div>
             </div>
-            );
+        );}
 
-        }
+
+
+
 };
 
 const mapStateToProps = (state, props) =>  {
