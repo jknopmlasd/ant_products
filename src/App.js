@@ -41,7 +41,7 @@ class App extends Component {
 
                     <Route exact path={'/products'}
                       render={props=>{
-                          if(st.auth.isAuth==0) return<Redirect to="/login" />
+                          //if(st.auth.isAuth==0) return<Redirect to="/login" />
                           return <Home {...props}/>
                       }}
                      />

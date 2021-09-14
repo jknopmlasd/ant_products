@@ -7,7 +7,7 @@ export const SIGNUP_FAIL = "SIGNUP_FAIL";
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
 
 
-const BASE_URL ="http://awaka.online/react/post.php";
+const BASE_URL ="https://awaka.online/react/post.php";
 
 export const sendLogInToServer = (userData) =>{
     return (dispatch)=>{

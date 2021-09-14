@@ -15,10 +15,13 @@ const LogInForm =(props) =>{
         
     });
     useEffect(() => {
+        //localStorage.removeItem("token");
         console.log("use effect",props);
         if(props.isAuth==1){
             console.log("will redirect");
          setTimeout(() => {
+             console.log("will push");
+             console.log(props.history);
               props.history.push('/products');
               }, 4000);
         
@@ -46,7 +49,7 @@ const LogInForm =(props) =>{
         return (
             <div className="container" style={{paddingTop: '6rem'}}>
     
-            <h2>Sign In successes, you will be redirected to home page in 4 seconds</h2>
+            <h2>Sign In success, you will be redirected to home page in 4 seconds</h2>
                 </div>)
       }
     return(

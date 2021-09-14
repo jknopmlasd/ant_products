@@ -1,6 +1,6 @@
 import { LOGIN_FAIL, LOGIN_SUCCESS, IS_AUTH,SIGNUP_FAIL,SIGNUP_SUCCESS} from "../actions/AuthAction";
 
-export const  authReducer =(state ={isAuth:0},action) =>{
+export const  authReducer =(state ={},action) =>{
     switch (action.type) {
         case IS_AUTH:
             return {...state, isAuth: action.payload};
