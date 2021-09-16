@@ -56,9 +56,11 @@ const SignUpForm =(props) =>{
       
     
         <div className="container" style={{paddingTop: '6rem'}}>
-      <div className="card mt-2 hv-center row">
-     <form onSubmit={handleSubmit} className="col-6">
-        <input type="user_name" 
+      <div className="card p-5 hv-center row">
+       <form onSubmit={handleSubmit} className="col-sm-8 mx-auto">
+        <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input type="user_name" 
                        className="form-control" 
                        id="user_name" 
                        name="user_name"
@@ -67,6 +69,11 @@ const SignUpForm =(props) =>{
                        onChange={handleChange}
                        required
                 />
+        </div>
+         
+        <div className="form-group">
+            <label htmlFor="email">Email</label>
+        </div>
              <input type="email" 
                        className="form-control" 
                        id="email" 
@@ -76,8 +83,9 @@ const SignUpForm =(props) =>{
                        onChange={handleChange}
                        required
                 />
-        
-         <input type="password" 
+        <div classname="form-group">
+            <label htmlFor="passsword">Password</label>
+            <input type="password" 
                         className="form-control" 
                         id="password" 
                         name="password"
@@ -86,7 +94,9 @@ const SignUpForm =(props) =>{
                         onChange={handleChange} 
                         required
                     />
-          <button className="btn btn-primary btn-lg">Sign Up</button>
+        </div>
+         
+          <button type="btn" className="btn btn-primary btn-lg btn-block">Sign Up</button>
         </form>
         </div>
         </div>
