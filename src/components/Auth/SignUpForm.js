@@ -1,8 +1,9 @@
 
 import React, {useState,useEffect} from 'react';
 import {connect} from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { sendSignUpToServer } from "../../actions/AuthAction";
+
 
 
 
@@ -42,9 +43,10 @@ const SignUpForm =(props) =>{
     } 
     if(props.isAuth==1){
         return (
-            <div className="container" style={{paddingTop: '6rem'}}>
-    
-            <h2>You are registered, you will be redirected to home page in 4 seconds</h2>
+            <div className="container-lg" style={{paddingTop: '6rem'}}>
+              <div classname="row p-5 m5">
+               <h2>You are registered, you will be redirected to home page in 4 seconds</h2>
+            </div> 
                 </div>)
     
     
@@ -55,49 +57,52 @@ const SignUpForm =(props) =>{
     return(
       
     
-        <div className="container" style={{paddingTop: '6rem'}}>
-      <div className="card p-5 hv-center row">
-       <form onSubmit={handleSubmit} className="col-sm-8 mx-auto">
-        <div className="form-group">
-            <label htmlFor="username">Username</label>
-            <input type="user_name" 
+        <div className="container-lg" style={{paddingTop: '6rem'}}>
+          <div className="text-center">
+              <i className="bi bi-person-circle"></i>
+              <h2 classname="display-2">Sign Up</h2>
+          </div>
+          <div className="row justify-content-center align-items-center">
+           <form onSubmit={handleSubmit} className="col-lg-6">
+            <div className="form-group my-1">
+             <label htmlFor="username">Username</label>
+             <input type="user_name" 
                        className="form-control" 
                        id="user_name" 
                        name="user_name"
-                       placeholder="Enter user_name" 
                        value={state.user_name}
                        onChange={handleChange}
                        required
                 />
         </div>
          
-        <div className="form-group">
+        <div className="form-group my-1">
             <label htmlFor="email">Email</label>
-        </div>
+        
              <input type="email" 
                        className="form-control" 
                        id="email" 
-                       name="email"
-                       placeholder="Enter email" 
+                       name="email" 
                        value={state.email}
                        onChange={handleChange}
                        required
                 />
-        <div classname="form-group">
+        </div>
+        <div classname="form-group my-1">
             <label htmlFor="passsword">Password</label>
             <input type="password" 
                         className="form-control" 
                         id="password" 
                         name="password"
-                        placeholder="Password"
                         value={state.password}
                         onChange={handleChange} 
                         required
                     />
         </div>
          
-          <button type="btn" className="btn btn-primary btn-lg btn-block">Sign Up</button>
+          <button type="btn" className="btn btn-success btn-lg col-12 my-2">Sign Up</button>
         </form>
+        <Link to="/login" className="text-center my-5">Already have an account? Log In here.</Link>
         </div>
         </div>
      

@@ -84,13 +84,16 @@ const LogInForm =(props) =>{
       }
     return(
       
-      <div className="container" style={{paddingTop: '6rem'}}>
-        
-      <div className="card p-5 hv-center row">
-     <form onSubmit={handleSubmit} className="col-sm-8 mx-auto">
-         <div className="form-group">
-             <label htrmFor="user_name">Username</label>
-             <input type="text" 
+      <div className="container-lg" style={{paddingTop: '6rem'}}>
+        <div className="text-center">
+              <i className="bi bi-person-circle"></i>
+              <h2 classname="display-2">Log In</h2>
+          </div>
+        <div className="row justify-content-center">
+          <form onSubmit={handleSubmit} className="col-lg-6">
+            <div className="form-group my-1">
+               <label htrmFor="user_name">Username</label>
+               <input type="text" 
                        className="form-control" 
                        id="user_name"
                        name="user_name" 
@@ -98,27 +101,25 @@ const LogInForm =(props) =>{
                        onChange={handleChange}
                 />
                 <small className="text-small text-muted">{state.errors["user_name"]}</small>
-         </div>
+           </div>
         
-        <div className="form-group">
-             <label htrmFor="password">Password</label>
-             <input type="password" 
+           <div className="form-group my-1">
+              <label htrmFor="password">Password</label>
+              <input type="password" 
                         className="form-control" 
                         id="password" 
                         name="password"
                         value={state.password}
                         onChange={handleChange} 
                     />
-                    <small className="text-small text-muted">{state.errors["password"]}</small>
-         </div>
+              <small className="text-small text-muted">{state.errors["password"]}</small>
+            </div>
          
           <p>{props.error && props.error}</p>
-          <button type="btn" className="btn btn-primary btn-lg btn-block">Log In</button>
-          
-          
-
+          <button type="btn" className="btn btn-primary btn-lg col-12">Log In</button>
+       
         </form>
-        <Link to="/signup" className="text-center">Do not have an account? Sign up here.</Link>
+        <Link to="/signup" className="text-center my-5">Do not have an account? Sign up here.</Link>
         </div>
        </div>
    )
